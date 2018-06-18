@@ -7,16 +7,18 @@ const Introduction = () => {
     <div>
       <Grid container spacing={24}>
         <Grid item xs={12}>
-          hello
+          <h1>hello</h1>
         </Grid>
         <Grid item xs={12}>
-          <div>CLICK HERE IF YOU NEED AN EYE EXAM FOR FREE</div>
+          <div className="App-color-blue text">
+            CLICK HERE IF YOU NEED AN EYE EXAM FOR FREE
+          </div>
         </Grid>
         <Grid item xs={12}>
-          <div>
+          <div className="text">
             We're fresh & innovative in our approach but we are a non profit
-            organization & our mission to give vision, needs your support. All
-            proceeds from demand care go directly to Will Grant Vision
+            organization<br /> & our mission to give vision, needs your support.
+            All proceeds from demand care go directly to<br /> Will Grant Vision
             Foundation program services.
           </div>
         </Grid>

@@ -7,15 +7,15 @@ const Exam = () => {
     <div>
       <Grid container spacing={24}>
         <Grid item xs={12}>
-          where would you like your exam?
+          <h1>where would you like your exam?</h1>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={5} className="App-card text">
           <div>In a Really Cool Spot</div>
-          <div>Nearby</div>
+          <div className="App-white-color">Nearby</div>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={5} className="App-card text">
           <div>Delivered</div>
-          <div>To you</div>
+          <div className="App-white-color">To you</div>
         </Grid>
       </Grid>
     </div>

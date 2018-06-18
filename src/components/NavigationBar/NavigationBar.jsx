@@ -11,10 +11,14 @@ import Exam from "../Exam/Exam";
 
 const styles = theme => ({
   root: {
-    backgroundColor: theme.palette.background.paper,
-    width: 500,
-    position: "relative",
-    minHeight: 200
+    backgroundColor: "#fff",
+    color: "white",
+    width: 360,
+    position: "center",
+    minHeight: 40
+  },
+  label: {
+    color: "white"
   },
   fab: {
     position: "absolute",
@@ -23,7 +27,7 @@ const styles = theme => ({
   },
   fabGreen: {
     color: theme.palette.common.white,
-    backgroundColor: green[500]
+    backgroundColor: green[400]
   }
 });
 
@@ -50,16 +54,22 @@ class NavigationBar extends React.Component {
     this.setState({ value: index });
   };
   render() {
-    const { theme } = this.props;
+    const { theme, classes } = this.props;
     return (
       <div>
-        <AppBar position="static" color="default">
+        <AppBar
+          position="static"
+          color="default"
+          classes={{
+            root: classes.root,
+            label: classes.label
+          }}
+        >
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
             indicatorColor="primary"
-            textColor="primary"
-            fullWidth
+            textColor="default"
           >
             <Tab label="On Demand" />
             <Tab label="Eye Exam" />
