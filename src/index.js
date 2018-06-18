@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./containers/App/App";
 import registerServiceWorker from "./registerServiceWorker";
+import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
@@ -23,7 +24,9 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={StoreInstance}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById("root")
 );
