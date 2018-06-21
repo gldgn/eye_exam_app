@@ -1,94 +1,89 @@
 import React from "react";
-import SwipeableViews from "react-swipeable-views";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
+import classNames from "classnames";
 import { withStyles } from "@material-ui/core/styles";
-import green from "@material-ui/core/colors/green";
-import Introduction from "../Introduction/Introduction";
-import Exam from "../Exam/Exam";
+import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import grey from "@material-ui/core/colors/grey";
+import Grid from "@material-ui/core/Grid";
 
-const styles = theme => ({
-  root: {
-    backgroundColor: "#fff",
-    color: "white",
-    width: 360,
-    position: "center",
-    minHeight: 40
+import "./NavigationBar.css";
+
+const styles = () => ({
+  container: {},
+  floatLeft: {
+    float: "left"
   },
-  label: {
-    color: "white"
+  floatRight: {
+    float: "right"
   },
-  fab: {
-    position: "absolute",
-    bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 2
+  margin: {
+    marginTop: 26,
+    marginRight: -34,
+    marginLeft: 10
   },
-  fabGreen: {
-    color: theme.palette.common.white,
-    backgroundColor: green[400]
+  cssRoot: {
+    borderRadius: 0,
+    color: grey[50],
+    paddingTop: 16,
+    paddingBottom: 16,
+    backgroundColor: grey[900],
+    "&:hover": {
+      color: grey[500],
+      backgroundColor: grey[900]
+    },
+    "&:active": {
+      color: grey[500],
+      backgroundColor: grey[900]
+    }
   }
 });
 
-function TabContainer(props) {
-  const { children, dir } = props;
-
-  return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
-      {children}
-    </Typography>
-  );
-}
-
 class NavigationBar extends React.Component {
-  state = {
-    value: 0
-  };
-
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
-
-  handleChangeIndex = index => {
-    this.setState({ value: index });
-  };
   render() {
-    const { theme, classes } = this.props;
+    const { classes } = this.props;
+
     return (
-      <div>
-        <AppBar
-          position="static"
-          color="default"
-          classes={{
-            root: classes.root,
-            label: classes.label
-          }}
-        >
-          <Tabs
-            value={this.state.value}
-            onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="default"
-          >
-            <Tab label="On Demand" />
-            <Tab label="Eye Exam" />
-          </Tabs>
-        </AppBar>
-        <SwipeableViews
-          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-          index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}
-        >
-          <TabContainer dir={theme.direction}>
-            <Introduction />
-            <Exam />
-          </TabContainer>
-          <TabContainer dir={theme.direction}>View Two</TabContainer>
-        </SwipeableViews>
+      <div className={classes.container}>
+        <Grid container spacing={24}>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classNames(
+                classes.margin,
+                classes.cssRoot,
+                classes.floatRight
+              )}
+              component={Link}
+              to="/on-demand"
+            >
+              ON DEMAND
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              variant="contained"
+              color="primary"
+              className={classNames(
+                classes.margin,
+                classes.cssRoot,
+                classes.floatLeft
+              )}
+              component={Link}
+              to="/eye-exam"
+            >
+              EYE EXAM
+            </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <div className="App-color-blue login-button">
+              <span>Login</span>
+            </div>
+          </Grid>
+        </Grid>
       </div>
     );
   }
 }
 
-export default withStyles(styles, { withTheme: true })(NavigationBar);
+export default withStyles(styles)(NavigationBar);

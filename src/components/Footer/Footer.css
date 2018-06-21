@@ -1,0 +1,12 @@
+.App-logo {
+  height: 50px;
+  display: flex;
+  margin-top: 500px;
+  margin-bottom: 60px;
+  justify-content: center;
+}
+
+.trademark {
+  font-size: 13px;
+  font-weight: 700;
+}
